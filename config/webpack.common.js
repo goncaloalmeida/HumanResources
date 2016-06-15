@@ -8,6 +8,7 @@ const helpers = require('./helpers');
 /*
  * Webpack Plugins
  */
+const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 // problem with copy-webpack-plugin
 var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -59,7 +60,7 @@ module.exports = {
     'main':      './src/main.browser.ts'
 
   },
-  
+
   /*
    * Options affecting the resolving of modules.
    *
@@ -177,6 +178,22 @@ module.exports = {
         test: /\.html$/,
         loader: 'raw-loader',
         exclude: [helpers.root('src/index.html')]
+      },
+
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'postcss', 'sass']
+      },
+
+      {
+        test: /\.(woff2?|ttf|eot|svg)$/,
+        loader: 'url?limit=10000'
+      },
+
+    // Bootstrap 4
+      {
+       test: /bootstrap\/dist\/js\/umd\//,
+       loader: 'imports?jQuery=jquery'
       }
 
     ]
@@ -270,6 +287,16 @@ module.exports = {
      */
     new HtmlElementsPlugin({
       headTags: require('./head-config.common')
+    }),
+
+    // var ProvidePlugin = require('webpack/lib/ProvidePlugin');
+    // require the plugin
+    new ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery',
+        "Tether": 'tether',
+        "window.Tether": "tether"
     })
   ],
 
