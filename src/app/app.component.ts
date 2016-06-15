@@ -2,11 +2,12 @@
  * Angular 2 decorators and services
  */
 import { Component, ViewEncapsulation } from '@angular/core';
-import { RouteConfig, Router } from '@angular/router-deprecated';
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
 import { AppState } from './app.service';
-import { Home } from './home';
-import { RouterActive } from './router-active';
+import { EntityList } from './entitylist';
+import { EntityDetailChart } from './entitydetailchart';
+import { EntityDetailInformation } from './entitydetailinformation';
 
 /*
  * App Component
@@ -15,41 +16,24 @@ import { RouterActive } from './router-active';
 @Component({
   selector: 'app',
   pipes: [ ],
-  providers: [ ],
-  directives: [ RouterActive ],
+  providers: [
+    ROUTER_PROVIDERS
+  ],
+  directives: [ ROUTER_DIRECTIVES ],
   encapsulation: ViewEncapsulation.None,
   styles: [
     require('./app.css')
   ],
-  template: `
-    <span router-active>
-      <button [routerLink]=" ['Index'] ">
-        Index
-      </button>
-    </span>
-    <span router-active>
-      <button [routerLink]=" ['Home'] ">
-        Home
-      </button>
-    </span>
-    <span router-active>
-      <button [routerLink]=" ['About'] ">
-        About
-      </button>
-    </span>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-  `
+  template: require('./app.html')
 })
 @RouteConfig([
-  { path: '/',      name: 'Index', component: Home, useAsDefault: true },
-  { path: '/home',  name: 'Home',  component: Home },
+//{ path: '/', name: 'Index', component: EntityDetailInformation, useAsDefault: true },
+  { path: '/entitylist',  name: 'Entity List',  component: EntityList },
+  { path: '/entitydetailchart',  name: 'Entity Detail Chart',  component: EntityDetailChart },
+  { path: '/entitydetailinformation',  name: 'Entity Detail Information',  component: EntityDetailInformation },
+
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
-  { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') }
+  { path: '/menu3', name: 'About', loader: () => require('es6-promise!./')('') }
 ])
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
