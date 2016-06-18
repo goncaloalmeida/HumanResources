@@ -3,17 +3,18 @@
  */
 import { bootstrap } from '@angular/platform-browser-dynamic';
 /*
-* Platform and Environment
-* our providers/directives/pipes
-*/
+ * Platform and Environment
+ * our providers/directives/pipes
+ */
 import { PLATFORM_PROVIDERS } from './platform/browser';
 import { ENV_PROVIDERS } from './platform/environment';
 
 /*
-* App Component
-* our top level component that holds all of our components
-*/
+ * App Component
+ * our top level component that holds all of our components
+ */
 import { App, APP_PROVIDERS } from './app';
+import {ELEMENT_PROBE_PROVIDERS} from "@angular/platform-browser";
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
@@ -24,9 +25,10 @@ export function main(initialHmrState?: any): Promise<any> {
   return bootstrap(App, [
     ...PLATFORM_PROVIDERS,
     ...ENV_PROVIDERS,
-    ...APP_PROVIDERS
+    ...APP_PROVIDERS,
+    ELEMENT_PROBE_PROVIDERS
   ])
-  .catch(err => console.error(err));
+    .catch(err => console.error(err));
 
 }
 
