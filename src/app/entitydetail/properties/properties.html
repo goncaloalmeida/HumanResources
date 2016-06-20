@@ -1,0 +1,26 @@
+<div class="row" >
+  <div class="col-md-6 leftcolumn">
+    <button type="button" class="btn btn-primary leftcolumn" (click)="isCollapsedMainProperties = !isCollapsedMainProperties">Main Properties</button>
+  </div>
+  <div class="col-md-6" [collapse]="isCollapsedMainProperties">
+    <ul>
+      <li>Field A: {{fieldA}}</li>
+      <li>Field B: {{fieldB}}</li>
+      <li>Field C: {{fieldC}}</li>
+      <li>Field D: {{fieldD}}</li>
+    </ul>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col-md-6 leftcolumn">
+    <button type="button" class="btn btn-primary leftcolumn" (click)="isCollapsedAdicionalProperties = !isCollapsedAdicionalProperties">Adicional Properties</button>
+  </div>
+  <div class="col-md-6" [collapse]="isCollapsedAdicionalProperties">
+    <ul>
+      <li>Data Criacao: {{data}}</li>
+      <li>Ult Update:   {{lupdate}}</li>
+    </ul>
+  </div>
+</div>
+<hr />
