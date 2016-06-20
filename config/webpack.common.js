@@ -19,7 +19,7 @@ const HtmlElementsPlugin = require('./html-elements-plugin');
  * Webpack Constants
  */
 const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
+  title: 'Human Resources',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
@@ -122,6 +122,7 @@ module.exports = {
           // these packages have problems with their sourcemaps
           helpers.root('node_modules/rxjs'),
           helpers.root('node_modules/@angular'),
+          helpers.root('node_modules/primeng'),
         ]
       }
 

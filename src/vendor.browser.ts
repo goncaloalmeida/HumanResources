@@ -18,6 +18,10 @@ import 'rxjs/add/operator/mergeMap';
 import 'jquery';
 import 'bootstrap-loader';
 
+// Angular 2 Material 2
+import '@angular2-material/tabs';
+import '@angular2-material/card';
+// look in src/platform/angular2-material2 and src/platform/providers
 
 if ('production' === ENV) {
   // Production
