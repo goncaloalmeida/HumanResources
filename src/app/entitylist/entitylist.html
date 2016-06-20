@@ -1,1 +1,40 @@
-      <label>TESTE </label>
+<br><br>
+<div class="row">
+  <div class="col-md-4">
+    <form #registrationForm="ngForm" (ngSubmit)="searchRecord(registrationForm.value)">
+      <fieldset class="form-group">
+        <label for="fieldA">Field A: </label>
+        <input type="text" id="fieldA" ngControl="fieldA" placeholder={{fieldA}}/>
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="fieldB">Field B: </label>
+        <select class="form-control" id="fieldB" ngControl="fieldB">
+          <option *ngFor="" [value]="p">{{p}}</option>
+        </select>
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="fieldC">Field C: </label>
+        <input type="text" id="fieldC" ngControl="fieldC" placeholder={{fieldC}}/>
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="fieldD">Field D: </label>
+        <input type="text" id="fieldD" ngControl="fieldD" placeholder={{fieldD}}>
+      </fieldset>
+        <input type="submit" id="search" value="Submit" />
+        <!--<input type="submit" id="clean" value="Clean" />-->
+    </form>
+  </div>
+  <div class="col-md-8">
+    <div class="ui-helper-clearfix">
+      <button type="button" (click)="dt.exportCSV()">Export</button>
+    </div>
+      <p-dataTable #dt [value]="persons" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+        <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header"></p-column>
+        <p-column styleClass="col-button">
+          <template let-person="rowData">
+            <button type="button"  (click)="selectPerson(person)">Open</button>
+          </template>
+        </p-column>
+      </p-dataTable>
+  </div>
+</div>

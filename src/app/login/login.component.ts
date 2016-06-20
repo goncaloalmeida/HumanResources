@@ -19,26 +19,6 @@ export class Login {
     } else {
       alert('Credenciais Erradas');
     }
-    //}
-    /*let body = JSON.stringify({ username, password });
-     event.preventDefault();
-     this.http.post('http://localhost:3001/sessions/create', body, { headers: contentHeaders })
-     .subscribe(
-     response => {
-     localStorage.setItem('jwt', response.json().id_token);
-     this.router.parent.navigateByUrl('/home');
-     },
-     error => {
-     alert(error.text());
-     console.log(error.text());
-     }
-     return this.http.get('../../assets/mock-data/fileData.json')
-     .map(this.extractData)
-     .catch(this.handleError);
-
-
-     /*
-     );*/
   }
 
 }
@@ -46,9 +26,6 @@ export class Login {
 function verificaLogin(username, password){
   //"substitui" ligação API
 
-  /*teste temporario*/
-  if ("aaa" == username && "aaa" == password) {
-    return true;
-  }
-  return false;
+
+  return true;
 }
